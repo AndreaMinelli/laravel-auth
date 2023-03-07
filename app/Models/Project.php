@@ -9,9 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected function getDescriptionAttribute($value)
+    protected function getDescription()
     {
-        return substr($value, 0, 40) . '...';
+        return substr($this->description, 0, 40) . '...';
     }
 
     public function getProjectLink()
