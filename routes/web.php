@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('guest.home');
 });
 
-Route::get('/admin', function () {
+Route::get('/home', function () {
     return view('admin.home');
 })->middleware(['auth', 'verified'])->name('admin.home');
 
