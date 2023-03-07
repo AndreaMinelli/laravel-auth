@@ -19,7 +19,7 @@
                 @forelse ($projects as $project)
                     <tr>
                         <th scope="row">{{ $project->name }}</th>
-                        <td>{{ $project->description }}</td>
+                        <td>{{ $project->getDescription() }}</td>
                         <td><a href="{{ $project->project_link }}">{{ $project->getProjectLink() }}</a></td>
                         <td>{{ $project->updated_at }}</td>
                         <td class="">
