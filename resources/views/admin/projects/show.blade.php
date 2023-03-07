@@ -15,5 +15,8 @@
                 <img src="{{ $project->project_img }}" alt="{{ $project->name }}">
             @endif
         </div>
+        <div class="d-flex justify-content-end my-4">
+            <a class="btn btn-secondary btn-sm" href="{{ route('admin.projects.index') }}">Torna indietro</a>
+        </div>
     </div>
 @endsection
