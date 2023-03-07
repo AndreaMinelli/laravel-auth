@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected function getDescription()
+    public function getDescription()
     {
         return substr($this->description, 0, 40) . '...';
     }
