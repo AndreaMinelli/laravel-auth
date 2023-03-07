@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', config('app.name', 'Laravel'))</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -37,11 +37,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link @if (request()->is('/')) active @endif"
+                                href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
+                                <a class="nav-link @if (request()->is('admin/projects*')) active @endif"
+                                    href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
                             </li>
                         @endauth
                     </ul>
