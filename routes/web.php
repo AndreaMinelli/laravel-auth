@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->name('admin.')->prefix('admin')->group(function () {
-    Route::get('/', [AdminHomeController::class, 'home'])->name('.home');
+    Route::get('/', [AdminHomeController::class, 'home'])->name('home');
 });
 
 
