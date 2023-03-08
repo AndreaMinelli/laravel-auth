@@ -29,7 +29,12 @@
                             href="{{ route('admin.projects.show', $project->id) }}">Visualiza</a>
                         <a class="btn btn-warning btn-sm text-white"
                             href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
-
+                        <form action="{{ route('admin.projects.destroy', $project->id) }}" class="delete-form"
+                            method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger btn-sm">Elimina</button>
+                        </form>
                     </td>
                 </tr>
             @empty

@@ -18,6 +18,11 @@
     <div class="d-flex justify-content-end my-4">
         <a class="btn btn-warning btn-sm text-white" href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
         <a class="btn btn-secondary btn-sm mx-2" href="{{ route('admin.projects.index') }}">Torna indietro</a>
+        <form action="{{ route('admin.projects.destroy', $project->id) }}" class="delete-form" method="POST">
+            @method('DELETE')
+            @csrf
+            <button class="btn btn-danger btn-sm">Elimina</button>
+        </form>
     </div>
 
 @endsection
