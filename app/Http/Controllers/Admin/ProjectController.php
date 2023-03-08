@@ -69,7 +69,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'project_img' => 'nullable|url',
+            'description' => 'nullable|string',
+            'project_link' => 'required|url',
+        ], [
+            'name.required' => 'Devi inserire un nome valido!',
+            'project_img.url' => 'Devi inserire un url valido!',
+            'project_link.required' => 'Devi inserire un link valido!',
+        ]);
+        $data = $request->all();
+        $project->fill($data);
+        $project->save();
+
+        return to_route('admin.projects.show', $project->id)->with('msg', "Il progetto $project->name è stato modificato.")->with('type', 'info');
     }
 
     /**
