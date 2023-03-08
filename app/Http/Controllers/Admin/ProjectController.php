@@ -35,7 +35,7 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->save();
 
-        return to_route('admin.projects.show', $project->id);
+        return to_route('admin.projects.show', $project->id)->with('msg', "Il progetto $project->name è stato aggiunto correttamente.")->with('type', 'success');
     }
 
     /**
