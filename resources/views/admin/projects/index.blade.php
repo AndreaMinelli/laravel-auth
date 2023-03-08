@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('title', 'Projects')
+@section('cdns')
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css'
+        integrity='sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=='
+        crossorigin='anonymous' />
+@endsection
 
 @section('content')
     <h1 class="text-center my-4">I miei progetti</h1>
@@ -24,16 +29,16 @@
                     <td>{{ $project->getDescription() }}</td>
                     <td><a href="{{ $project->project_link }}">{{ $project->getProjectLink() }}</a></td>
                     <td>{{ $project->updated_at }}</td>
-                    <td>
-                        <a class="btn btn-primary btn-sm"
-                            href="{{ route('admin.projects.show', $project->id) }}">Visualiza</a>
+                    <td class="d-flex justify-content-between">
+                        <a class="btn btn-primary btn-sm" href="{{ route('admin.projects.show', $project->id) }}"><i
+                                class="fa-solid fa-eye"></i></a>
                         <a class="btn btn-warning btn-sm text-white"
-                            href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
+                            href="{{ route('admin.projects.edit', $project->id) }}"><i class="fa-solid fa-pencil"></i></a>
                         <form action="{{ route('admin.projects.destroy', $project->id) }}" class="delete-form"
                             method="POST">
                             @method('DELETE')
                             @csrf
-                            <button class="btn btn-danger btn-sm">Elimina</button>
+                            <button class="btn btn-danger btn-sm"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
                     </td>
                 </tr>
