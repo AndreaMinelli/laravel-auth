@@ -24,6 +24,8 @@
         @include('includes.navbar')
         <main>
             <div class="container">
+                @include('includes.alerts.session')
+                @include('includes.alerts.error')
                 @yield('content')
             </div>
         </main>
