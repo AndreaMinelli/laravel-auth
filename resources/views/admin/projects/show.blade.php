@@ -16,7 +16,8 @@
         @endif
     </div>
     <div class="d-flex justify-content-end my-4">
-        <a class="btn btn-secondary btn-sm" href="{{ route('admin.projects.index') }}">Torna indietro</a>
+        <a class="btn btn-warning btn-sm text-white" href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
+        <a class="btn btn-secondary btn-sm mx-2" href="{{ route('admin.projects.index') }}">Torna indietro</a>
     </div>
 
 @endsection
