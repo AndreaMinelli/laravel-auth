@@ -13,7 +13,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Descrizione</th>
                 <th scope="col">Link Git Hub</th>
-                <th scope="col">Ultimo Aggiornamento</th>
+                <th scope="col">Ultimo Agg.</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -24,9 +24,11 @@
                     <td>{{ $project->getDescription() }}</td>
                     <td><a href="{{ $project->project_link }}">{{ $project->getProjectLink() }}</a></td>
                     <td>{{ $project->updated_at }}</td>
-                    <td class="">
+                    <td>
                         <a class="btn btn-primary btn-sm"
                             href="{{ route('admin.projects.show', $project->id) }}">Visualiza</a>
+                        <a class="btn btn-warning btn-sm text-white"
+                            href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
 
                     </td>
                 </tr>
