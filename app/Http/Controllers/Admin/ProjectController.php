@@ -30,6 +30,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'project_img' => 'nullable|url',
+            'description' => 'nullable|string',
+            'project_link' => 'required|url',
+        ], [
+            'name.required' => 'Devi inserire un nome valido!',
+            'project_img.url' => 'Devi inserire un url valido!',
+            'project_link.required' => 'Devi inserire un link valido!',
+        ]);
         $data = $request->all();
         $project = new Project();
         $project->fill($data);
