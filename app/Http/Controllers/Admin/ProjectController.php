@@ -34,12 +34,14 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required|string',
             'project_img' => 'nullable|url',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'project_link' => 'required|url',
         ], [
             'name.required' => 'Devi inserire un nome valido!',
-            'project_img.url' => 'Devi inserire un url valido!',
+            'description.required' => 'Devi inserire una descrizione!',
+            'project_img.url' => 'L\'immagine deve avere un url valido!',
             'project_link.required' => 'Devi inserire un link valido!',
+            'project_link.url' => 'Il link del progetto non è valido.',
         ]);
         $data = $request->all();
         $project = new Project();
@@ -73,12 +75,14 @@ class ProjectController extends Controller
         $request->validate([
             'name' => 'required|string',
             'project_img' => 'nullable|url',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'project_link' => 'required|url',
         ], [
             'name.required' => 'Devi inserire un nome valido!',
-            'project_img.url' => 'Devi inserire un url valido!',
+            'description.required' => 'Devi inserire una descrizione!',
+            'project_img.url' => 'L\'immagine deve avere un url valido!',
             'project_link.required' => 'Devi inserire un link valido!',
+            'project_link.url' => 'Il link del progetto non è valido.',
         ]);
         $data = $request->all();
         $project->fill($data);
