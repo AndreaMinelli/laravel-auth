@@ -9,6 +9,8 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'project_img', 'project_link', 'description'];
+
     public function getDescription()
     {
         return substr($this->description, 0, 40) . '...';
