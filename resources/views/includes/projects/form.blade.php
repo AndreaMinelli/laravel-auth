@@ -48,6 +48,10 @@
     @enderror
 </div>
 <div class="text-end mt-5">
+    <a class="btn btn-secondary"
+        href="@if ($project->exists) {{ route('admin.projects.show', $project->id) }}
+    @else
+    {{ route('admin.projects.index') }} @endif">Annulla</a>
     <button class="btn btn-success">Salva</button>
 </div>
 </form>
