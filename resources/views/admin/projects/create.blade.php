@@ -5,7 +5,7 @@
 @section('content')
     <h1 class="text-center my-4">Crea nuovo progetto</h1>
 
-    <form action="{{ route('admin.projects.store') }}" method="POST" class="row g-3">
+    <form action="{{ route('admin.projects.store') }}" method="POST" class="row g-3" novalidate>
         @csrf
         <div class="col-4">
             <label for="name" class="form-label">Nome Progetto:</label>
