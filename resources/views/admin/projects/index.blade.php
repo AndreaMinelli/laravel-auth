@@ -9,8 +9,16 @@
 
 @section('content')
     <h1 class="text-center my-4">I miei progetti</h1>
-    <div class="text-end my-4">
-        <a class="btn btn-success btn-sm" href="{{ route('admin.projects.create') }}">Aggiungi progetto</a>
+    <div class="d-flex justify-content-between align-items-center my-4">
+        <a class="btn btn-success" href="{{ route('admin.projects.create') }}">Aggiungi progetto</a>
+        <form action="{{ route('admin.projects.index') }}" method="get" class="input-group w-25">
+            <select class="form-select" name="published">
+                <option value="" selected>Tutti</option>
+                <option value="published">Pubblicati</option>
+                <option value="unpublished">Non pubblicati</option>
+            </select>
+            <button class="btn btn-outline-secondary" type="submit">Filtra</button>
+        </form>
     </div>
     <table class="table table-striped align-middle">
         <thead>
