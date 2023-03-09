@@ -12,7 +12,7 @@
     </div>
     <div class="d-flex justify-content-center">
         @if ($project->project_img)
-            <img src="{{ $project->project_img }}" alt="{{ $project->name }}">
+            <img src="{{ asset('storage/' . $project->project_img) }}" alt="{{ $project->name }}">
         @endif
     </div>
     <div class="d-flex justify-content-end my-4">
