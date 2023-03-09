@@ -90,6 +90,10 @@ class ProjectController extends Controller
             'project_link.url' => 'Il link del progetto non è valido.',
         ]);
         $data = $request->all();
+        if (Arr::exists($data, 'project_img')) {
+            if ($project->project_img) Storage::delete($project->project_img);
+            $data['project_img'] = Storage::put('projects', $data['project_img']);
+        }
         $project->fill($data);
         $project->save();
 
