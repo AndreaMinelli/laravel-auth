@@ -30,18 +30,13 @@
     @enderror
 </div>
 
-<div class="col-4" id="change-image" style='display:{{ $project->exists ? 'block' : 'none' }}'>
+<div class="col-4" id="upload-image">
     <label for="project_img" class="form-label">Immagine:</label>
     <div class="input-group mb-3">
-        <button type="button" class="btn btn-primary" id="show-image-input">Cambia immagine</button>
-    </div>
-</div>
-
-<div class="col-4" id="upload-image" style='display:{{ $project->exists ? 'none' : 'block' }}'>
-    <label for="project_img" class="form-label">Immagine:</label>
-    <div class="input-group mb-3">
-        <input type="file" class="form-control @error('project_img') is-invalid @enderror" id="project_img"
-            name="project_img">
+        <button type="button" class="btn btn-primary rounded-end" id="show-image-input"
+            style='display:{{ $project->exists ? 'block' : 'none' }}'>Cambia immagine</button>
+        <input type="file" class="form-control rounded-start @error('project_img') is-invalid @enderror"
+            id="project_img" name="project_img" style='display:{{ $project->exists ? 'none' : 'block' }}'>
         @error('project_img')
             <div class="invalid-feedback">
                 {{ $message }}
@@ -71,10 +66,9 @@
 @section('scripts')
     <script>
         const showImageInput = document.getElementById("show-image-input");
-        const changeImage = document.getElementById("change-image");
-        const uploadImage = document.getElementById("upload-image");
+        const uploadImage = document.getElementById("project_img");
         showImageInput.addEventListener("click", () => {
-            changeImage.style.display = 'none';
+            showImageInput.style.display = 'none';
             uploadImage.style.display = 'block';
         });
     </script>
