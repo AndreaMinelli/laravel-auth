@@ -50,7 +50,7 @@
         alt="image-preview" id="image-preview" class="img-fluid">
 </div>
 
-<div class="col-12">
+<div class="col-10">
     <label for="description" class="form-label">Descrizione:</label>
     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" required>{{ old('description', $project->description) }}</textarea>
     @error('description')
@@ -59,6 +59,15 @@
         </div>
     @enderror
 </div>
+
+<div class="col-2 d-flex align-items-end justify-content-end">
+    <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="published" name="published"
+            @if (old('published', $project->published)) checked @endif>
+        <label class="form-check-label" for="published">Pubblica</label>
+    </div>
+</div>
+
 <div class="text-end mt-5">
     <a class="btn btn-secondary"
         href="@if ($project->exists) {{ route('admin.projects.show', $project->id) }}
