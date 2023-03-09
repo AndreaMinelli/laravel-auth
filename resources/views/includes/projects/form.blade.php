@@ -1,8 +1,10 @@
 @if ($project->exists)
-    <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" class="row g-3" novalidate>
+    <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" class="row g-3"
+        enctype="multipart/form-data" novalidate>
         @method('PUT')
     @else
-        <form action="{{ route('admin.projects.store') }}" method="POST" class="row g-3" novalidate>
+        <form action="{{ route('admin.projects.store') }}" method="POST" class="row g-3" enctype="multipart/form-data"
+            novalidate>
 @endif
 
 @csrf
@@ -18,14 +20,14 @@
 </div>
 <div class="col-4">
     <label for="project_img" class="form-label">Immagine:</label>
-    <input type="url" class="form-control @error('project_img') is-invalid @enderror" id="project_img"
-        name="project_img" value="{{ old('project_img', $project->project_img) }}"
-        placeholder="Inserisci url dell'immagine" required>
-    @error('project_img')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-    @enderror
+    <div class="input-group mb-3">
+        <input type="file" class="form-control" id="project_img" name="project_img">
+        @error('project_img')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+        @enderror
+    </div>
 </div>
 <div class="col-4">
     <label for="project_link" class="form-label">Git Hub Link:</label>
