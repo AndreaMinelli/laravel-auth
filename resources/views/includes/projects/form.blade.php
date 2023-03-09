@@ -30,19 +30,24 @@
     @enderror
 </div>
 
-<div class="col-4" id="upload-image">
+<div class="col-3" id="upload-image">
     <label for="project_img" class="form-label">Immagine:</label>
     <div class="input-group mb-3">
         <button type="button" class="btn btn-primary rounded-end" id="show-image-input"
             style='display:{{ $project->exists ? 'block' : 'none' }}'>Cambia immagine</button>
         <input type="file" class="form-control rounded-start @error('project_img') is-invalid @enderror"
-            id="project_img" name="project_img" style='display:{{ $project->exists ? 'none' : 'block' }}'>
+            id="project_img" name="project_img" style='display:{{ $project->exists ? 'none' : 'block' }}'
+            onchange="preview(event)">
         @error('project_img')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
         @enderror
     </div>
+</div>
+<div class="col-1 d-flex align-items-center">
+    <img src="{{ $project->project_img ? asset('storage/' . $project->project_img) : 'https://www.innerintegratori.it/wp-content/uploads/2021/06/placeholder-image-300x225.png' }}"
+        alt="image-preview" id="image-preview" class="img-fluid">
 </div>
 
 <div class="col-12">
@@ -71,5 +76,17 @@
             showImageInput.style.display = 'none';
             uploadImage.style.display = 'block';
         });
+    </script>
+    <script>
+        const imagePreview = document.getElementById("image-preview");
+        const preview = function(event) {
+            if (event.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    imagePreview.src = reader.result;
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        };
     </script>
 @endsection
