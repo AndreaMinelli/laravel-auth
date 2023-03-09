@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -45,6 +47,9 @@ class ProjectController extends Controller
         ]);
         $data = $request->all();
         $project = new Project();
+        if (Arr::exists($data, 'project_img')) {
+            $data['project_img'] = Storage::put('projects', $data['project_img']);
+        }
         $project->fill($data);
         $project->save();
 
