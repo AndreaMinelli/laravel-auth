@@ -13,9 +13,9 @@
         <a class="btn btn-success" href="{{ route('admin.projects.create') }}">Aggiungi progetto</a>
         <form action="{{ route('admin.projects.index') }}" method="get" class="input-group w-25">
             <select class="form-select" name="published">
-                <option value="" selected>Tutti</option>
-                <option value="published">Pubblicati</option>
-                <option value="unpublished">Non pubblicati</option>
+                <option value=""selected>Tutti</option>
+                <option value="published"@if (request('published') === 'published') selected @endif>Pubblicati</option>
+                <option value="unpublished"@if (request('published') === 'unpublished') selected @endif>Non pubblicati</option>
             </select>
             <button class="btn btn-outline-secondary" type="submit">Filtra</button>
         </form>
