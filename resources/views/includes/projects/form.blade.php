@@ -21,7 +21,8 @@
 <div class="col-4">
     <label for="project_img" class="form-label">Immagine:</label>
     <div class="input-group mb-3">
-        <input type="file" class="form-control" id="project_img" name="project_img">
+        <input type="file" class="form-control @error('project_img') is-invalid @enderror" id="project_img"
+            name="project_img">
         @error('project_img')
             <div class="invalid-feedback">
                 {{ $message }}
