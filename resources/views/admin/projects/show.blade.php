@@ -8,6 +8,7 @@
     <p>{{ $project->description }}</p>
     <div class="d-flex justify-content-between">
         <p><strong>Repository: <a href="{{ $project->project_link }}">{{ $project->getProjectLink() }}</a></strong></p>
+        <p><strong>Pubblicato:</strong> {{ $project->published ? 'Si' : 'No' }}</p>
         <p><strong>Ultimo Aggiornamento:</strong> {{ $project->updated_at }}</p>
     </div>
     <div class="d-flex justify-content-center">
