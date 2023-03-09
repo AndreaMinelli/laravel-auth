@@ -19,6 +19,25 @@
     @enderror
 </div>
 <div class="col-4">
+    <label for="project_link" class="form-label">Git Hub Link:</label>
+    <input type="url" class="form-control @error('project_link') is-invalid @enderror" id="project_link"
+        name="project_link" value="{{ old('project_link', $project->project_link) }}"
+        placeholder="Inserisci url del link" required>
+    @error('project_link')
+        <div class="invalid-feedback">
+            {{ $message }}
+        </div>
+    @enderror
+</div>
+
+<div class="col-4" id="change-image" style='display:{{ $project->exists ? 'block' : 'none' }}'>
+    <label for="project_img" class="form-label">Immagine:</label>
+    <div class="input-group mb-3">
+        <button type="button" class="btn btn-primary" id="show-image-input">Cambia immagine</button>
+    </div>
+</div>
+
+<div class="col-4" id="upload-image" style='display:{{ $project->exists ? 'none' : 'block' }}'>
     <label for="project_img" class="form-label">Immagine:</label>
     <div class="input-group mb-3">
         <input type="file" class="form-control @error('project_img') is-invalid @enderror" id="project_img"
@@ -30,17 +49,7 @@
         @enderror
     </div>
 </div>
-<div class="col-4">
-    <label for="project_link" class="form-label">Git Hub Link:</label>
-    <input type="url" class="form-control @error('project_link') is-invalid @enderror" id="project_link"
-        name="project_link" value="{{ old('project_link', $project->project_link) }}"
-        placeholder="Inserisci url del link" required>
-    @error('project_link')
-        <div class="invalid-feedback">
-            {{ $message }}
-        </div>
-    @enderror
-</div>
+
 <div class="col-12">
     <label for="description" class="form-label">Descrizione:</label>
     <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" required>{{ old('description', $project->description) }}</textarea>
@@ -58,3 +67,15 @@
     <button class="btn btn-success">Salva</button>
 </div>
 </form>
+
+@section('scripts')
+    <script>
+        const showImageInput = document.getElementById("show-image-input");
+        const changeImage = document.getElementById("change-image");
+        const uploadImage = document.getElementById("upload-image");
+        showImageInput.addEventListener("click", () => {
+            changeImage.style.display = 'none';
+            uploadImage.style.display = 'block';
+        });
+    </script>
+@endsection
