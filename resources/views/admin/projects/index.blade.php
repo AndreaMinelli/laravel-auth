@@ -27,6 +27,7 @@
                 <th scope="col">Descrizione</th>
                 <th scope="col">Link Git Hub</th>
                 <th scope="col">Ultimo Agg.</th>
+                <th scope="col">Pub.</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@
                     <td>{{ $project->getDescription() }}</td>
                     <td><a href="{{ $project->project_link }}">{{ $project->getProjectLink() }}</a></td>
                     <td>{{ $project->updated_at }}</td>
+                    <td>{{ $project->published ? 'Si' : 'No' }}</td>
                     <td class="d-flex justify-content-between">
                         <a class="btn btn-primary btn-sm" href="{{ route('admin.projects.show', $project->id) }}"><i
                                 class="fa-solid fa-eye"></i></a>
