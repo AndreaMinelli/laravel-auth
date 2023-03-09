@@ -52,6 +52,7 @@ class ProjectController extends Controller
         if (Arr::exists($data, 'project_img')) {
             $data['project_img'] = Storage::put('projects', $data['project_img']);
         }
+        $data['published'] = Arr::exists($data, 'published') ? 1 : 0;
         $project->fill($data);
         $project->save();
 
@@ -96,6 +97,7 @@ class ProjectController extends Controller
             if ($project->project_img) Storage::delete($project->project_img);
             $data['project_img'] = Storage::put('projects', $data['project_img']);
         }
+        $data['published'] = Arr::exists($data, 'published') ? 1 : 0;
         $project->fill($data);
         $project->save();
 
